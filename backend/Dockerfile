@@ -4,19 +4,19 @@ FROM python:3.10
 # Establishing working directory 
 WORKDIR /app
 
-# Copiar los archivos de requisitos y instalar las dependencias
+# Copy file requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el resto de la aplicación
+# Copy the rest of the app
 COPY . .
 
-# Establecer PYTHONPATH
+# Establishing PYTHONPATH
 ENV PYTHONPATH /app
 
-# Exponer el puerto que FastAPI utilizará
+# Expose port FastAPI will be using
 EXPOSE 8000
 
-# Comando para ejecutar la aplicación usando el script run.py
+# Command to execute the app using run.py script
 CMD ["python", "run.py"]
 

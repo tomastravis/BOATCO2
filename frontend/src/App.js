@@ -1,13 +1,14 @@
 import React from 'react';
+import Header from './components/Header';
+import Dashboard from './components/Dashboard';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome to BOATCO2</h1>
-      </header>
+    <div>
+      <Header />
+      <Dashboard />
     </div>
   );
-}
+};
 
 export default App;
