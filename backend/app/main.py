@@ -1,10 +1,17 @@
-from flask import Flask, send_from_directory
+"""Modulo principal de la aplicación fastAPI."""
+# app/main.py
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = Flask(__name__, static_folder="../frontend/build")
+app = FastAPI()
 
-@app.route('/')
-def serve():
-    return send_from_directory(app.static_folder, 'index.html')
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://frontend:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    print('boatco2 backend main.py')

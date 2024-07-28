@@ -1,10 +1,22 @@
-FROM python:3.9-slim
+# Using official python image as base
+FROM python:3.10
 
+# Establishing working directory 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+# Copiar los archivos de requisitos y instalar las dependencias
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copiar el resto de la aplicación
 COPY . .
 
-CMD ["python", "main.py"]
+# Establecer PYTHONPATH
+ENV PYTHONPATH /app
+
+# Exponer el puerto que FastAPI utilizará
+EXPOSE 8000
+
+# Comando para ejecutar la aplicación usando el script run.py
+CMD ["python", "run.py"]
+
