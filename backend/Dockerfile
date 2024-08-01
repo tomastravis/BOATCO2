@@ -1,22 +1,8 @@
-# Using official python image as base
-FROM python:3.10
+FROM python:3.9-slim
 
-# Establishing working directory 
 WORKDIR /app
-
-# Copy file requirements and install dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the app
+RUN pip install -r requirements.txt
 COPY . .
-
-# Establishing PYTHONPATH
-ENV PYTHONPATH /app
-
-# Expose port FastAPI will be using
 EXPOSE 8000
-
-# Command to execute the app using run.py script
-CMD ["python", "run.py"]
-
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

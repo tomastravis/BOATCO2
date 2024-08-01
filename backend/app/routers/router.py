@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 api_sum = APIRouter()
 
 @api_sum.get("/sum")
-async def summ(x: int, y: int):
+async def sum_router(x: int, y: int):
     '''Sums two numbers
 
     Args:

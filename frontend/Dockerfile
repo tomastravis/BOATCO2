@@ -1,23 +1,14 @@
-# Use an official Node runtime as a parent image
-FROM node:14-alpine
+# Stage 1: Build the Angular app
+FROM node:16 as build
 
-# Set the working directory to /app
 WORKDIR /app
+COPY package.json ./
+RUN npm install --legacy-peer-deps
+COPY . .
+RUN npm run build --prod
 
-# Copy package.json and package-lock.json to the working directory
-COPY package.json /app/package.json
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application to the working directory
-COPY . ./
-
-# Build the app for production
-# RUN npm run build
-
-# Expose port 3000
-# EXPOSE 3000
-
-# Command to run the app
-CMD ["npm", "start"]
+# Stage 2: Serve the app with Nginx
+FROM nginx:alpine
+COPY --from=build /app/dist/frontend /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
