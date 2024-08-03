@@ -1,15 +1,19 @@
-# Stage 1: Build the Angular app
-FROM node:16 as build
-WORKDIR /app
-COPY package*.json ./
-RUN npm cache clean --force
-RUN npm install -g @angular/cli@12.0.0
-RUN npm install --legacy-peer-deps
-COPY . .
-RUN ng build --configuration production
+# base image
+FROM node:18.19
 
-# Stage 2: Serve the app with Nginx
-FROM nginx:alpine
-COPY --from=build /app/dist/frontend /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# set working directory
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /app/package.json
+RUN npm install
+RUN npm install -g @angular/cli@7.3.9
+
+# add app
+COPY . /app
+
+# start app
+CMD ng serve --host 0.0.0.0
