@@ -124,8 +124,10 @@
     line-height: 1.4rem;
     letter-spacing: -0.00875rem;
     text-decoration: none;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    cursor: pointer;
   }
-
   .pill:hover {
     background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
   }

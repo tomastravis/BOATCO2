@@ -4,11 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-dashboard',
   standalone: true,
   imports: [],
-  template: `
-    <p>
-      dashboard works!
-    </p>
-  `,
+  templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
