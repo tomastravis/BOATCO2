@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   backend:
     build:
@@ -7,7 +8,6 @@ services:
       - ./Backend:/app
     ports:
       - "8000:8000"
-
     networks:
       - app-network
     restart: unless-stopped
@@ -15,22 +15,16 @@ services:
       - CHOKIDAR_USEPOLLING=true
 
   frontend:
-    build: ./Frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
     ports:
       - "4200:4200"
     volumes:
-      - ./Frontend/src:/app/src
-      #- /app/node_modules
-
-    environment:
-      - REACT_APP_BACKEND_URL=http://localhost:8000
-
+      - ./Frontend:/app  # Monta el frontend completo, pero ignora node_modules
     networks:
       - app-network
-
     restart: unless-stopped
 
 networks:
   app-network:
-
-

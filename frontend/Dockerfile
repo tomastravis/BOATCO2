@@ -1,19 +1,24 @@
-# base image
+# Base image
 FROM node:18.19
 
-# set working directory
+# Set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
+# Add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
-# install and cache app dependencies
+# Copy package.json and package-lock.json (if it exists)
 COPY package.json /app/package.json
-RUN npm install
-RUN npm install -g @angular/cli@7.3.9
+COPY package-lock.json /app/package-lock.json
 
-# add app
+# Install dependencies
+RUN npm install
+
+# Install Angular CLI (más actualizado)
+RUN npm install -g @angular/cli@18.0.0
+
+# Copy all app files
 COPY . /app
 
-# start app
-CMD ng serve --host 0.0.0.0
+# Expose port and start the app
+CMD ng serve --host 0.0.0.0 --disable-host-check

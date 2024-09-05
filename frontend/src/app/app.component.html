@@ -58,6 +58,40 @@
     </div>
 </header>
 
+<div class="container">
+  <aside class="sidebar">
+    <h2>Route Details</h2>
+    <form>
+      <!-- Dropdown selection -->
+      <label for="boatSelect">Choose ship:</label>
+      <select id="boatSelect" name="boatSelect">
+        <option value="">Select a ship</option>
+      </select>
+
+      <div *ngIf="data()">
+        {{ data() | json }}
+      </div>
+
+      <!-- Checkbox selection -->
+      <fieldset>
+        <legend>Select metrics:</legend>
+        <label>
+          <input type="checkbox" name="metric" value="daily"> Daily
+        </label>
+        <label>
+          <input type="checkbox" name="metric" value="weekly"> Weekly
+        </label>
+        <label>
+          <input type="checkbox" name="metric" value="monthly"> Monthly
+        </label>
+      </fieldset>
+
+      <!-- Submit button (for later POST requests) -->
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+  </aside>
+</div>
+
 <main>
   <div class="content">
     <h1>Dashboard</h1>

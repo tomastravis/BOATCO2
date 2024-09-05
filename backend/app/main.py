@@ -8,13 +8,14 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://frontend:3000"],
+    allow_origins=["http://localhost:4200"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
 
 app.include_router(router.api_sum)
+app.include_router(router.api_boat_list)
 
 if __name__ == "__main__":
     print('boatco2 backend main.py')
