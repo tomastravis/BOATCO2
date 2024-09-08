@@ -1,7 +1,6 @@
 # Dependencies
 node_modules/
 .angular
-.vscode
 
 # Compiled output
 /dist
@@ -45,3 +44,31 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Python
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST

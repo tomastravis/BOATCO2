@@ -4,7 +4,7 @@ services:
     # platform: linux/arm64/v8
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     volumes:
       - ./backend:/app
     ports:
@@ -19,7 +19,7 @@ services:
     # platform: linux/arm64/v8
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
       - 4200:4200
     # Avoid dev rebuilds
