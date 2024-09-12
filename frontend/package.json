@@ -1,6 +1,6 @@
 {
   "name": "boatco2",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -43,5 +43,10 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.5.2",
     "vite": "^5.4.3"
+  },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
   }
 }
