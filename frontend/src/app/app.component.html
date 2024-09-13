@@ -62,15 +62,27 @@
   <aside class="sidebar">
     <h2>Route Details</h2>
     <form>
-      <!-- Dropdown selection -->
-      <label for="boatSelect">Choose ship:</label>
-      <select id="boatSelect" name="boatSelect">
-        <option value="">Select a ship</option>
-      </select>
+      <!-- Input for dynamic filtering -->
+    <label for="boatSearch">Search and Select Ship:</label>
+    <input
+      id="boatSearch"
+      type="text"
+      placeholder="Type to search ships..."
+      (input)="onInput($event)"
+    />
 
-      <div *ngIf="data()">
-        {{ data() | json }}
-      </div>
+    <!-- Display filtered ships dynamically -->
+    <ul *ngIf="filteredShips().length > 0">
+      @for (ship of filteredShips(); track ship.imo) {
+        <li (click)="onSelectShip(ship.imo)">
+          {{ ship.name }} (IMO: {{ ship.imo }})
+        </li>
+      }
+    </ul>
+
+    <div *ngIf="filteredShips().length === 0">
+      <p>No ships found matching your search.</p>
+    </div>
 
       <!-- Checkbox selection -->
       <fieldset>

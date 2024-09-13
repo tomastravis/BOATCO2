@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BoatService {
-  private apiEndpoint = 'http://localhost:8000/get_boats'; // Your API endpoint
+  private apiEndpoint = 'http://backend:8000/get_boats'; // Your API endpoint
   private boats = [];
 
   constructor(private httpClient: HttpClient) {}

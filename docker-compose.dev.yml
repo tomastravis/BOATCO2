@@ -1,7 +1,7 @@
 services:
   backend:
     # For architecture change (not available for Podman)
-    # platform: linux/arm64/v8
+    platform: linux/arm64/v8
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
@@ -16,15 +16,15 @@ services:
       - CHOKIDAR_USEPOLLING=true
   frontend:
     # For architecture change (not available for Podman)
-    # platform: linux/arm64/v8
+    platform: linux/arm64/v8
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
     ports:
       - 4200:4200
     # Avoid dev rebuilds
-    volumes:
-      - ./frontend:/app
+    #volumes:
+    #  - ./frontend:/app
     networks:
       - app-network
     restart: unless-stopped

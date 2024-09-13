@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:8000'; // Cambia esto por tu URL de API
+  private apiUrl = 'http://backend:8000'; // Cambia esto por tu URL de API
 
   constructor(private http: HttpClient) { }
 

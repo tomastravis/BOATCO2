@@ -256,3 +256,27 @@
       width: 100%; /* Take full width on small screens */
   }
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+  max-height: 200px; /* Control the height */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+input {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
