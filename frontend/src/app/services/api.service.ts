@@ -13,7 +13,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  // Ejemplo de GET request  
   getBoats(): Observable<any> {
     return this.http.get(`${this.apiUrl}/get_boats`).pipe(
       catchError(error => {
@@ -22,7 +21,15 @@ export class ApiService {
       })
     );
   }
-  
+
+  getRoutes(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/get_network`).pipe(
+      catchError(error => {
+        console.error('Error fetching data:', error);
+        return throwError(error);
+      })
+    );
+  }
 
   // Ejemplo de POST request
   enviarDatos(data: any): Observable<any> {

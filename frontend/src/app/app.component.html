@@ -70,7 +70,6 @@
       placeholder="Type to search ships..."
       (input)="onInput($event)"
     />
-
     <!-- Display filtered ships dynamically -->
     <ul *ngIf="filteredShips().length > 0">
       @for (ship of filteredShips(); track ship.imo) {
@@ -106,9 +105,9 @@
 
 <main>
   <div class="content">
-    <h1>Dashboard</h1>
-    <div class="divider"></div>
     <p>Monitor your CO2 emissions and costs.</p>
     <app-dashboard></app-dashboard>
+    <div id="map" class="leaflet-map"></div> <!-- Added a class for CSS targeting -->
   </div>
 </main>
+
