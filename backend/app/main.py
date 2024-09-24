@@ -15,7 +15,7 @@ app.add_middleware(
 )
 
 app.include_router(router.api_boat_list)
-app.include_router(router.api_network)
+app.include_router(router.api_port_list)
 
 if __name__ == "__main__":
     print('boatco2 backend main.py')

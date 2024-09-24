@@ -75,8 +75,8 @@
   min-height: 100vh;
   background-color: #fff; /* Adjust background if needed */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: baseline;
 }
 
 
@@ -287,6 +287,7 @@ input {
   height: 500px; /* Set a proper height for the map */
   max-width: 700px; /* Optional, depending on your layout */
   margin-top: 1rem; /* Add some spacing from other content */
+  margin-left: 250px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional for visual appearance */
 }
 
@@ -299,14 +300,10 @@ input {
   gap: 1.5rem; /* Add some spacing between elements */
 }
 
-main {
-  flex-grow: 1;
-  margin-left: 250px; /* Sidebar width */
-  padding: 1rem;
-  box-sizing: border-box;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Start at the top */
-  min-height: 100vh;
+/* Style for the selected ship information */
+.selected-ship-info {
+  font-size: 1.2rem;
+  color: var(--bright-blue);
+  font-weight: bold;
+  margin-bottom: 10px; /* Add some space below */
 }

@@ -68,7 +68,7 @@
       id="boatSearch"
       type="text"
       placeholder="Type to search ships..."
-      (input)="onInput($event)"
+      (input)="onInputShip($event)"
     />
     <!-- Display filtered ships dynamically -->
     <ul *ngIf="filteredShips().length > 0">
@@ -106,8 +106,43 @@
 <main>
   <div class="content">
     <p>Monitor your CO2 emissions and costs.</p>
+
+    <!-- Display selected ship's name and IMO -->
+    <p *ngIf="selectedShip() as selected" class="selected-ship-info">
+      Selected Ship: {{ selected.name }} (IMO: {{ selected.imo }})
+    </p>
+
+    <!-- Port Selection Section -->
+    <label for="portSearch">Search and Select Port:</label>
+    <input
+      id="portSearch"
+      type="text"
+      placeholder="Type to search ports..."
+      (input)="onInputPort($event)"
+    />
+
+    <!-- Display filtered ports dynamically -->
+    <ul *ngIf="filteredPorts().length > 0">
+      @for (port of filteredPorts(); track port.port) {
+        <li (click)="onSelectPort(port.port)">
+          {{ port.port }} - {{ port.country }}
+        </li>
+      }
+    </ul>
+
+    <div *ngIf="filteredPorts().length === 0">
+      <p>No ports found matching your search.</p>
+    </div>
+
+    <!-- Display the selected port's information -->
+    <p *ngIf="selectedPort() as selected" class="selected-port-info">
+      Selected Port: {{ selected.port }}, Country: {{ selected.country }}
+    </p>
+
     <app-dashboard></app-dashboard>
-    <div id="map" class="leaflet-map"></div> <!-- Added a class for CSS targeting -->
+    <div id="map" class="leaflet-map"></div>
   </div>
 </main>
+
+
 

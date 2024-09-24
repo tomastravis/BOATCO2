@@ -22,8 +22,8 @@ export class ApiService {
     );
   }
 
-  getRoutes(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/get_network`).pipe(
+  getPorts(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/get_ports`).pipe(
       catchError(error => {
         console.error('Error fetching data:', error);
         return throwError(error);
