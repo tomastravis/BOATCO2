@@ -3,12 +3,14 @@ import { Component, OnInit, signal, computed, Inject, PLATFORM_ID } from '@angul
 import { RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ApiService } from './services/api.service';
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgOptimizedImage, DashboardComponent, CommonModule],
+  imports: [RouterOutlet, NgOptimizedImage, DashboardComponent, CommonModule, FormsModule, NgSelectModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [ApiService]

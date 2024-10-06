@@ -62,6 +62,13 @@
   <aside class="sidebar">
     <h2>Route Details</h2>
     <form>
+    <ng-select [items]="shipsData()"
+      bindLabel="name"
+      bindValue="imo"
+      placeholder="Select an option"
+      [(ngModel)]="selectedShip"
+      [notFoundText]="'No items found'">
+    </ng-select>
       <!-- Input for dynamic filtering -->
     <label for="boatSearch">Search and Select Ship:</label>
     <input

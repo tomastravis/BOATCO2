@@ -13,4 +13,5 @@ RUN npm ci --retry=5 && npm install -g @angular/cli@18.2.3 --retry=5 && npm cach
 COPY . /app
 
 # Expose port and start the app
+# Try removing --disable-host-check
 CMD ["ng", "serve", "--host", "0.0.0.0", "--disable-host-check"]
