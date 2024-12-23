@@ -6,11 +6,13 @@ import { ApiService } from './services/api.service';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClient } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from "./sidebar/sidebar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgOptimizedImage, DashboardComponent, CommonModule, FormsModule, NgSelectModule],
+  imports: [RouterOutlet, NgOptimizedImage, DashboardComponent, CommonModule, FormsModule, NgSelectModule, HeaderComponent, SidebarComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [ApiService]
@@ -25,21 +27,23 @@ export class AppComponent implements OnInit {
   selectedPort = signal<{ port: string, country: string } | null>(null); // Add state for selected port
   private map: any; // Leaflet map type dynamically loaded
 
-  // Computed property to filter ships based on input value
-  filteredShips = computed(() => {
-    const filter = this.filterShipValue().toLowerCase();
-    return this.shipsData().filter(ship =>
-      ship.name.toLowerCase().includes(filter) || ship.imo.toString().includes(filter)
-    );
-  });
-
   // Computed property to filter ports based on input value
   filteredPorts = computed(() => {
     const filter = this.filterPortValue().toLowerCase();
-    return this.portsData().filter(port =>
+    console.log('Filtered Ports:', this.portsData());
+  
+    // Filter the ports based on the search value
+    const filtered = this.portsData().filter(port =>
       port.port.toLowerCase().includes(filter) || port.country.toLowerCase().includes(filter)
     );
+  
+    // Deduplicate the ports based on `port.port`
+    const uniquePorts = Array.from(new Map(filtered.map(port => [port.port, port])).values());
+  
+    console.log('Unique Ports:', uniquePorts); // Debug to ensure no duplicates
+    return uniquePorts;
   });
+  
 
   constructor(
     private apiService: ApiService,

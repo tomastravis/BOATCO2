@@ -3,3 +3,4 @@ uvicorn==0.30.6
 matplotlib==3.9.2
 networkx==3.3
 pandas==2.2.2
+searoute==1.4.2

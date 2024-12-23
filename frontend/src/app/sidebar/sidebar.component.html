@@ -1,0 +1,51 @@
+<div class="container">
+    <aside class="sidebar">
+      <h2>Route Details</h2>
+      <form>
+      <ng-select [items]="shipsData"
+        bindLabel="name"
+        bindValue="imo"
+        placeholder="Select an option"
+        [(ngModel)]="selectedShip"
+        [notFoundText]="'No items found'">
+      </ng-select>
+        <!-- Input for dynamic filtering -->
+      <label for="boatSearch">Search and Select Ship:</label>
+      <input
+        id="boatSearch"
+        type="text"
+        placeholder="Type to search ships..."
+        (input)="onInputShip($event)"
+      />
+      <!-- Display filtered ships dynamically -->
+      <ul *ngIf="filteredShips().length > 0">
+        @for (ship of filteredShips(); track ship.imo) {
+          <li (click)="onSelectShip(ship.imo)">
+            {{ ship.name }} (IMO: {{ ship.imo }})
+          </li>
+        }
+      </ul>
+  
+      <div *ngIf="filteredShips().length === 0">
+        <p>No ships found matching your search.</p>
+      </div>
+  
+        <!-- Checkbox selection -->
+        <fieldset>
+          <legend>Select metrics:</legend>
+          <label>
+            <input type="checkbox" name="metric" value="daily"> Daily
+          </label>
+          <label>
+            <input type="checkbox" name="metric" value="weekly"> Weekly
+          </label>
+          <label>
+            <input type="checkbox" name="metric" value="monthly"> Monthly
+          </label>
+        </fieldset>
+  
+        <!-- Submit button (for later POST requests) -->
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+    </aside>
+  </div>

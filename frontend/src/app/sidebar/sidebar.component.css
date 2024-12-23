@@ -1,0 +1,130 @@
+.sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 60px; /* Ensure it sits below the header */
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Spacing between elements */
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5rem;
+    color: var(--gray-900);
+  }
+  
+  .sidebar form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .sidebar label {
+    font-size: 1rem;
+    color: var(--gray-700);
+  }
+  
+  .sidebar select, .sidebar input[type="checkbox"] {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--gray-400);
+    border-radius: 0.25rem;
+    background-color: white;
+  }
+  
+  .sidebar button.btn-submit {
+    background: var(--red-to-pink-to-purple-horizontal-gradient);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+  
+  .sidebar button.btn-submit:hover {
+    background: var(--red-to-pink-to-purple-vertical-gradient);
+  }
+
+  li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: #f0f0f0;
+  }
+
+  input {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ng-select {
+    width: 100%; /* Make the dropdown take up the full width */
+    border: 1px solid var(--gray-400); /* Border consistent with your theme */
+    border-radius: 0.25rem; /* Consistent rounded corners */
+    background-color: white; /* White background for clarity */
+    padding: 0.5rem; /* Add padding inside the dropdown */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    font-family: inherit; /* Inherit font from the sidebar */
+  }
+  
+  /* Styling for the selected item in ng-select */
+  .ng-select .ng-select-container {
+    height: 40px; /* Control height of the dropdown */
+    background-color: var(--gray-100); /* Light background for the dropdown */
+    border-radius: 0.25rem; /* Ensure consistent border radius */
+    color: var(--gray-900); /* Font color consistent with your theme */
+  }
+  
+  /* Customize the dropdown list */
+  .ng-select .ng-dropdown-panel {
+    background-color: white; /* Keep background white */
+    border: 1px solid var(--gray-400); /* Border around the dropdown panel */
+    border-radius: 0.25rem; /* Consistent rounded corners */
+    max-height: 200px; /* Limit height to avoid overflow */
+    overflow-y: auto; /* Scroll if too many items */
+  }
+  
+  /* Style individual options */
+  .ng-select .ng-option {
+    padding: 0.5rem; /* Add padding for each option */
+    color: var(--gray-900); /* Text color for options */
+    font-family: inherit; /* Inherit the font from the parent */
+  }
+  
+  .ng-select .ng-option:hover {
+    background-color: var(--gray-300); /* Light gray background on hover */
+  }
+  
+  /* Style for the placeholder */
+  .ng-select .ng-select-placeholder {
+    color: var(--gray-700); /* Match the placeholder text color */
+  }
+  
+  /* Style the arrow icon */
+  .ng-select .ng-select-arrow {
+    border-color: var(--gray-900) transparent transparent; /* Custom arrow color */
+  }
+  
+  /* Loading indicator customization */
+  .ng-select .ng-select-loading {
+    background-color: transparent;
+    border: none;
+    color: var(--gray-900);
+  }
+  
+  /* Adjust the "No items found" message */
+  .ng-select .ng-option-disabled {
+    color: var(--gray-400); /* Lighter color for disabled text */
+    background-color: var(--gray-200); /* Subtle background */
+  }
+  
